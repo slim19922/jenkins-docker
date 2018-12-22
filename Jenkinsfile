@@ -18,11 +18,12 @@ pipeline {
                 }
             }
 
-}       
-        stage ('deploy')
+}              
+        stage ('deploy') {
             steps{
                build job : 'deploy package staging'
             }
+        }
     }
 }
 
