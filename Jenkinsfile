@@ -9,9 +9,7 @@ pipeline {
                 /*For Mac & Linux machine */
                  sh  'mvn clean package checkstyle:checkstyle'
             }
-            steps{
-                sh 'docker build . -t tomcatwebpass:{$env.BUILD_ID}'
-            }
+            
 
             post{
                 success{
@@ -20,6 +18,12 @@ pipeline {
                     archiveArtifacts artifacts : '**/*.war'
                 }
             }
+        stage ('create tomcat docker image'){
+            steps{
+                sh "docker build . -t tomcatwebpass:${env.BUILD_ID}"
+            }
+        }
+            
 
 }              
         
