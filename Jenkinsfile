@@ -17,7 +17,7 @@ pipeline {
 
                     archiveArtifacts artifacts : '**/*.war'
                 }
-            }
+            }}
         stage ('create tomcat docker image'){
             steps{
                 sh "docker build . -t tomcatwebpass:${env.BUILD_ID}"
@@ -25,7 +25,7 @@ pipeline {
         }
             
 
-}              
+             
         
     }
 }
