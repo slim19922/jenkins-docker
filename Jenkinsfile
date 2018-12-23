@@ -9,6 +9,9 @@ pipeline {
                 /*For Mac & Linux machine */
                  sh  'mvn clean package checkstyle:checkstyle'
             }
+            steps{
+                sh 'docker build . -t tomcatwebpass:{$env.BUILD.ID}'
+            }
 
             post{
                 success{
